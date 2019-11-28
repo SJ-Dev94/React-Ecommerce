@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios'
 //import { updateWindowSize } from './Redux/actions/windowSizeAction.js'
 import Container from 'react-bootstrap/container'
 import Col from 'react-bootstrap/Col'
@@ -42,7 +43,8 @@ class App extends React.Component {
         MShirts: 156354707508,
         MPants: 156354478132,
         MJackets: 156354347060,
-      }
+      },
+      test: ''
     };
     this.result = [{
       Categories: {
@@ -70,6 +72,8 @@ class App extends React.Component {
         this.props.updateWindowSize(window.innerWidth);
       }, 200)
     );
+
+    this.getHello();
 
   }
 
@@ -134,6 +138,18 @@ class App extends React.Component {
       return <SalesHeaderSmall />
     }
   }
+
+  getHello = () => {
+    axios.get('/api/hello')
+      .then(res => this.setState({ test: res.data }))
+  }
+
+  sendHello = () => {
+    axios.post('/api/hello', (req, res) => {
+      console.log("hello")
+    }
+    )
+  }
   render() {
     const bodyStyles = {
       marginLeft: '1.75rem',
@@ -150,6 +166,8 @@ class App extends React.Component {
       letterSpacing: '1px'
 
     }
+
+    console.log(this.state.test)
 
     return (
       <div className="App" style={appStyles}>
