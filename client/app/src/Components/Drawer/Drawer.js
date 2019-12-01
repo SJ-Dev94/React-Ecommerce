@@ -1,5 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,7 +17,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const drawerWidth = 200;
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
