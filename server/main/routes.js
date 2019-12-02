@@ -7,11 +7,10 @@ const bcrypt = require('bcrypt');
 const uuidv4 = require('uuid/v4');
 const LocalStrategy = require('passport-local').Strategy;
 const pool = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  port: process.env.PGPORT,
-  ssl: true
+  user: 'seth',
+  host: 'localhost',
+  database: 'commerceapi',
+  port: 5432
 });
 
 //home
@@ -19,6 +18,12 @@ router.get('/', (req, res) => {
   res.json({ userData: req.user });
 })
 //
+
+router.get('/api/categories', (req, res) => {
+  pool.query('SELECT * FROM categories', (q_err, q_res) => {
+    res.json(q_res.rows)
+  })
+})
 
 //User Sign Up
 router.get('/signup', (req, res) => {

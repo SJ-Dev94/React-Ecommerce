@@ -12,35 +12,15 @@ import '../../Styles/Carousel.scss'
 
 export default function LandingCarousel() {
 
-
-  const flexxem = {
-    display: 'flex',
-    flexDirection: 'row'
+  const spacing = {
+    marginBottom: '1.75rem',
+    marginTop: '-2%'
   }
 
-
-  const iframeWrapper = {
-    position: 'relative',
-    overflow: 'hidden',
-    paddingTop: '60%',
-  }
-
-  const bottomSpacing = {
-    marginBottom: '1.75rem'
-  }
-
-  const flexColumn = {
-    display: 'flex',
-    flexDirection: 'column'
-  }
-
-  const carouselMargin = {
-
-  }
 
   return (
 
-    <Carousel style={bottomSpacing}>
+    <Carousel style={spacing}>
       <Carousel.Item>
         <Card>
           <Row>
@@ -63,14 +43,14 @@ export default function LandingCarousel() {
                     Fluffy Full-Zip Fleece
                       </strong>
                 </p>
-                <Button>Men</Button>
+                <Button variant="danger">Men</Button>
                 <br />
                 <p>
                   <strong>
                     Fluffy Full-Zip Fleece
                       </strong>
                 </p>
-                <Button>Women</Button>
+                <Button variant="danger">Women</Button>
               </Card.Text>
               <Card.Text>
                 <p>Lorem Ipsum Delore de fuck dis shits

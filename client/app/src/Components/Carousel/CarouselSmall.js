@@ -25,8 +25,9 @@ export default function LandingCarouselSmall() {
     paddingTop: '60%',
   }
 
-  const bottomSpacing = {
-    marginBottom: '1.75rem'
+  const spacing = {
+    marginBottom: '1.75rem',
+    marginTop: '-2%'
   }
 
   const flexColumn = {
@@ -40,7 +41,7 @@ export default function LandingCarouselSmall() {
 
   return (
 
-    <Carousel style={bottomSpacing}>
+    <Carousel style={spacing}>
       <Carousel.Item>
         <Row>
           <Col sm={12} md={12} lg={12} xl={12}>

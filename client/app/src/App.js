@@ -22,6 +22,7 @@ import updateWindowSize from './Redux/actions/windowSizeAction.js'
 import SalesHeader from './Components/SalesHeader/SalesHeader.js'
 import SalesHeaderSmall from './Components/SalesHeader/SalesHeaderSmall.js'
 import SalesBody from './Components/SalesBody/SalesBody.js'
+import LandingJumbotron from './Components/Jumbotron/Jumbotron'
 
 
 
@@ -73,7 +74,8 @@ class App extends React.Component {
       }, 200)
     );
 
-    this.getHello();
+    this.getCategories();
+    console.log(this.state);
 
   }
 
@@ -139,8 +141,8 @@ class App extends React.Component {
     }
   }
 
-  getHello = () => {
-    axios.get('/api/hello')
+  getCategories = () => {
+    axios.get('/api/categories')
       .then(res => this.setState({ test: res.data }))
   }
 
@@ -167,15 +169,15 @@ class App extends React.Component {
 
     }
 
-    console.log(this.state.test)
+    console.log(this.state.test);
 
     return (
       <div className="App" style={appStyles}>
         <Header client={this.props.client} />
         <div style={bodyStyles}>
-          {this.renderSalesHeader()}
+          <LandingJumbotron />
+
           {this.renderCarousel()}
-          <SalesBody />
           <h4>Women's Clothes</h4>
 
           <Products
