@@ -1,4 +1,46 @@
-/* fix schema of foreign keys for gender */
+
+
+/*
+ ----READ ME----
+ the order in which these tables are displayed is the order in which you must create them due to foreign key restraints
+
+ gender -> users -> categories -> products  -> 
+ ---------------
+ */
+
+---------------
+/* GENDER */
+---------------
+
+CREATE TABLE gender (
+  gender VARCHAR(6) PRIMARY KEY NOT NULL
+);
+
+INSERT INTO gender VALUES (DEFAULT, 'Men');
+INSERT INTO gender VALUES (DEFAULT, 'Women');
+
+---------------
+/* CATEGORIES */
+---------------
+
+CREATE TABLE categories (
+  id SERIAL NOT NULL,
+  category VARCHAR(50) UNIQUE PRIMARY KEY NOT NULL,
+  gender VARCHAR(6) REFERENCES gender(gender),
+  image VARCHAR NOT NULL
+);
+
+INSERT INTO categories VALUES (DEFAULT, 'Women''s Shirts', 'Women', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmensshirts.jpg?alt=media&token=df713cd9-ea81-459a-b6cf-b1eb0765b24c');
+
+INSERT INTO categories VALUES (DEFAULT, 'Women''s Pants', 'Women', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fwomenspants.jpg?alt=media&token=53a8b742-eb67-411b-88b3-3e3eb96e0e66');
+
+INSERT INTO categories VALUES (DEFAULT, 'Women''s Jackets', 'Women', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fwomensjackets.jpg?alt=media&token=52b7c0d7-9134-4a26-8de0-eb7dfe8587e7');
+
+INSERT INTO categories VALUES (DEFAULT, 'Men''s Shirts', 'Men', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmensshirts.jpg?alt=media&token=df713cd9-ea81-459a-b6cf-b1eb0765b24c');
+
+INSERT INTO categories VALUES (DEFAULT, 'Men''s Pants', 'Men', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmenspants.jpg?alt=media&token=5a0ff9c7-7241-48b4-9012-aadb692143d8');
+
+INSERT INTO categories VALUES (DEFAULT, 'Men''s Jackets', 'Men', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmensjackets.jpg?alt=media&token=15fa3bba-d07b-41ab-92ad-5ef5b95349bb');
 
 ---------------
 /* USERS */
@@ -12,6 +54,8 @@ CREATE TABLE users (
   date_created DATE,
   last_login DATE
 );
+
+CREATE TABLE carts
 
 ---------------
 /* PRODUCTS */
@@ -52,40 +96,3 @@ INSERT INTO products VALUES (
   'A cozy crew neck for casual attire.'
 );
 
----------------
-/* GENDER */
----------------
-
-CREATE TABLE gender (
-  id SERIAL PRIMARY KEY NOT NULL,
-  gender VARCHAR(6) UNIQUE NOT NULL
-);
-
-INSERT INTO gender VALUES (DEFAULT, 'Men');
-INSERT INTO gender VALUES (DEFAULT, 'Women');
-
----------------
-/* CATEGORIES */
----------------
-
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY NOT NULL,
-  category VARCHAR(50) UNIQUE NOT NULL,
-  gender VARCHAR(6) UNIQUE NOT NULL,
-  image VARCHAR NOT NULL
-);
-
-
-INSERT INTO categories VALUES (DEFAULT, 'Shirts', 'Women', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmensshirts.jpg?alt=media&token=df713cd9-ea81-459a-b6cf-b1eb0765b24c');
-
-INSERT INTO categories VALUES (DEFAULT, 'Pants', 'Women', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fwomenspants.jpg?alt=media&token=53a8b742-eb67-411b-88b3-3e3eb96e0e66');
-
-INSERT INTO categories VALUES (DEFAULT, 'Jackets', 'Women', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fwomensjackets.jpg?alt=media&token=52b7c0d7-9134-4a26-8de0-eb7dfe8587e7');
-
-
-
-INSERT INTO categories VALUES (DEFAULT, 'Shirts', 'Men', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmensshirts.jpg?alt=media&token=df713cd9-ea81-459a-b6cf-b1eb0765b24c');
-
-INSERT INTO categories VALUES (DEFAULT, 'Pants', 'Men', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmenspants.jpg?alt=media&token=5a0ff9c7-7241-48b4-9012-aadb692143d8');
-
-INSERT INTO categories VALUES (DEFAULT, 'Jackets', 'Men', 'https://firebasestorage.googleapis.com/v0/b/react-ecommerce-demo.appspot.com/o/categoryimages%2Fmensjackets.jpg?alt=media&token=15fa3bba-d07b-41ab-92ad-5ef5b95349bb');
